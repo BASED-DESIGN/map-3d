@@ -19,7 +19,8 @@ import useStore from '@helpers/store'
 
 registerLoaders([GLTFScenegraphLoader])
 
-const zoomMarker = 17
+const zoomMarker = 16.5
+const zoomMarkerScale = 13
 
 const Map = props => {
   const [markers, setMarkers] = useState(null)
@@ -27,7 +28,7 @@ const Map = props => {
   const viewState = useStore(state => state.viewState)
   const defaultZoom = useStore(state => state.defaultZoom)
   const [zoom, setZoom] = useState(defaultZoom)
-
+  console.log(zoom)
   const [glContext, setGLContext] = useState()
   const deckRef = useRef(null)
   const mapRef = useRef(null)
@@ -41,7 +42,7 @@ const Map = props => {
       pickable: true,
       // getScene: d => console.log(d),
       getPosition: d => d.coordinates,
-      sizeScale: base.scale,
+      sizeScale: zoom<zoomMarkerScale ? base.scale * zoom*.3 : base.scale,
       getColor: [...base.color, zoom<zoomMarker?255:200],
       getOrientation: [0, 50, 90],
       // getTranslation: [0, 0, 100],
@@ -150,7 +151,7 @@ const Map = props => {
         layers={[
           ...baseLayers,
           region1, region2, 
-          layerIconArt
+          // layerIconArt
         ]}
         // effects={[lightingEffect]}
         getTooltip={({object}) => object && `${object.name}`}
