@@ -20,7 +20,7 @@ import useStore from '@helpers/store'
 registerLoaders([GLTFScenegraphLoader])
 
 const zoomMarker = 16.5
-const zoomMarkerScale = 13
+const zoomMarkerScale = 14
 
 const Map = props => {
   const [markers, setMarkers] = useState(null)

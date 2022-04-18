@@ -1,6 +1,6 @@
 import create from 'zustand'
 
-const defaultZoom = 13.4
+const defaultZoom = 12.5
 
 const useStore = create((set, get) => ({
   defaultZoom,
