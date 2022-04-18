@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+
+import Header from '@components/header'
 import Map from '@components/map'
 import SelectPanel from '@components/select-panel'
 
@@ -14,6 +16,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <Header />
+        
         <Map />
 
         <SelectPanel />

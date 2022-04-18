@@ -8,6 +8,9 @@ import geoDataTaipeiDistrict from '@data/taipei-district.json'
 import useStore from '@helpers/store'
 import * as turf from '@turf/turf'
 
+const iconHome = 'icon-home.svg'
+const iconAngleRight = 'icon-angle-right.svg'
+
 const SelectPanel = props => {
   const viewState = useStore(state => state.viewState)
 
@@ -48,17 +51,29 @@ const SelectPanel = props => {
   }
 
   return (
-    <div className="fixed bottom-4 left-4 bg-white">
-      <select onChange={handleSelect}>
-        {Object.keys(dataDistrict).map((d, i) => 
-          <option key={`option-${d}`} value={i}>{dataDistrict[d].name}</option>  
-        )}
-      </select>
-      <select >
-        {dataMarkerBases.map((d, i) => 
-          <option key={`option-${i}`}>{d.name}</option>  
-        )}
-      </select>
+    <div className="fixed bottom-0 left-0 md:flex md:justify-center md:mb-8 md:right-0">
+      <div className="flex items-center bg-white border border-black w-full md:w-auto">
+        <div className="home p-2 border-r border-black">
+          <a href="" className='block w-4 h-4 bg-contain bg-no-repeat bg-center' style={{backgroundImage: `url(${iconHome})`}}></a>
+        </div>
+        <div className="w-20">
+          <select className='w-full text-center appearance-none' onChange={handleSelect}>
+            {Object.keys(dataDistrict).map((d, i) => 
+              <option key={`option-${d}`} value={i}>{dataDistrict[d].name}</option>  
+            )}
+          </select>
+        </div>        
+        <div className="w-4">
+          <a href="" className='block w-4 h-4 bg-contain bg-no-repeat bg-center' style={{backgroundImage: `url(${iconAngleRight})`}}></a>
+        </div>
+        <div className="w-24">
+          <select className='w-full text-center appearance-none'>
+            {dataMarkerBases.map((d, i) => 
+              <option key={`option-${i}`}>{d.name}</option>  
+            )}
+          </select>
+        </div>
+      </div>
     </div>
   )
 }
