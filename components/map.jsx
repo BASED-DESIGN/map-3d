@@ -151,7 +151,7 @@ const Map = props => {
         layers={[
           ...baseLayers,
           region1, region2, 
-          // layerIconArt
+          layerIconArt
         ]}
         // effects={[lightingEffect]}
         getTooltip={({object}) => object && `${object.name}`}
