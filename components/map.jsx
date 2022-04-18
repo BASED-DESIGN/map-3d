@@ -28,7 +28,6 @@ const Map = props => {
   const viewState = useStore(state => state.viewState)
   const defaultZoom = useStore(state => state.defaultZoom)
   const [zoom, setZoom] = useState(defaultZoom)
-  console.log(zoom)
   const [glContext, setGLContext] = useState()
   const deckRef = useRef(null)
   const mapRef = useRef(null)
@@ -124,7 +123,7 @@ const Map = props => {
       width: 68*1,
       height: 91*1
     }),
-    sizeScale: zoom*5,
+    sizeScale: zoom<zoomMarkerScale ? 0 : zoom*5,
     getPosition: d => d.coordinates,
     // getSize: d => 10,
     // getColor: d => [Math.sqrt(d.exits), 140, 0]
